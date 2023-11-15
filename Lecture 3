@@ -1,0 +1,106 @@
+Basic Structure:
+lst[start:stop] # items start through stop-1
+lst[start:] # items start through the rest of the array
+lst[:stop] # items from the beginning through stop-1
+lst[:] # a copy of the whole array
+lst[1:] vs. lst[1:-1]?
+lst[1:] will give you the slice from the second item till the end;
+lst[1:-1] will return the slice from the second item till the second last item.
+
+
+
+lst1 = ['a']
+print(f'This is lst1: {lst1}')
+lst2 = ['b', lst1]
+print(f'This is lst2: {lst2}')
+lst2[1].append('c')
+print(f"This is lst2 after modifying it: {lst2}")
+###This is lst2 after modifying it: ['b', ['a', 'c']]
+print(f"This is lst1 after modifying lst2: {lst1}")
+###This is lst1 after modifying lst2: ['a', 'c']
+
+
+lst1 = ['a']
+print(f'This is lst1: {lst1}')
+lst3 = ['b', ['a']]
+print(f'This is lst3: {lst3}')
+lst3[1].append('c')
+print(f"This is lst3 after appending 'c': {lst3}")
+###This is lst3 after appending 'c': ['b', ['a', 'c']]
+print(f"This is lst1 after modifying lst3: {lst1}")
+###This is lst1 after modifying lst3: ['a']
+
+
+happy = True
+if happy is True:
+print("I am happy")
+print("This will print regardless of the value of happy")
+
+
+
+happy = True
+very_happy = True
+if happy is True:
+print("I am happy") # <-- four-spaces indentation
+if very_happy is True: # <-- four-spaces indentation
+print("Actually, I'm really happy!") # <-- eight-spaces indentation
+
+
+
+if not False:
+print("not False is True")
+if not True is False:
+print("not True is False")
+
+
+less_than_test = "That" < "This"
+print(f'"That" < "This" yields {less_than_test}')
+greater_than_test = "That" > "This"
+print(f'"That" > "This" yields {greater_than_test}')
+
+
+var1 = 'a'
+var2 = 'a'
+print(var1 is var2) # --> True
+print(var1 == var2) # --> True
+var3 = ['a']
+var4 = ['a']
+print(var3 is var4) # --> False
+print(var3 == var4) # --> True
+
+
+a = 0
+b = True
+if a != 0:
+print("a is non-zero")
+elif b is True:
+print("b is True")
+elif a < 0 and b is True:
+print("a is negative and b is True")
+else:
+print("None of the conditions above hold")
+
+
+
+a = -1
+b = True
+if a != 0:
+print("a is non-zero")
+elif b is True:
+print("b is True")
+elif a < 0 and b is True:
+print("a is negative and b is True")
+else:
+print("None of the conditions above hold")
+
+
+
+if x > 0 and y is True:
+# Write code for this case later
+pass
+elif x <= 0 and y is True:
+# Write code for this case later
+pass
+else:
+# Write code for this case later
+pass
