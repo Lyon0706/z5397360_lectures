@@ -1,0 +1,111 @@
+import yfinance
+start = '2020-01-01'
+end = None
+tickers = ["QAN.AX", "WES.AX"]
+for tic in tickers:
+df = yfinance.download(tic, start, end)
+print(df)
+tic_base = tic.lower().split('.')[0]
+df.to_csv(f'{tic_base}_stk_prc.csv')
+
+
+
+tic = 'QAN.AX' # 
+tic = tic.lower() # --> 'qan.ax' 
+tic_base = tic.split('.')[0] # --> 'qan'
+csv_name = f'{tic_base}_stk_prc.csv' # --> 'qan_stk_prc.csv' 
+print(csv_name) 
+
+
+def mk_csv_name(tic):
+tic = tic.lower()
+tic_base = tic.split('.')[0]
+csv_name = f'{tic_base}_stk_prc.csv'
+return csv_name
+
+
+def mk_csv_name(tic): 
+tic = tic.lower()
+tic_base = tic.split('.')[0]
+return f'{tic_base}_stk_prc.csv' 
+name = mk_csv_name('QAN.AX') 
+print(name) 
+
+
+pairs = [
+('a', 1),
+('b', 2),
+('c', 3),
+]
+# Create an empty dictionary
+dic = {} # (1)
+# Iterate over each tuple in `pairs` and update the dictionary
+for key, value in pairs: # 
+dic.update({key:value}) # 
+
+
+
+pairs = [
+('a', 1),
+('b', 2),
+('c', 3),
+]
+# This WILL work
+
+
+# Create a dictionary
+dic = {'a': 1, 'b': 2, 'c': 3}
+
+
+# Start with a dictionary
+dic = {'a': 1, 'b': 2, 'c': 3}
+# Create a list of (key, val) using list comprehensions:
+pairs = [(key,value) for key,value in dic.items()]
+print(pairs)
+
+
+# Create a list with all even integers from 0 to 1 million
+evens = [x for x in range(1_000_000 + 1) if x % 2 == 0]
+print(evens[:10])
+
+
+# Some data (list of tuples)
+data = [
+('a', 1),
+('b', 2),
+('c', 3),
+]
+# Create a dict comprehension
+dic = {k:v for k, v in data}
+print(f'`dic` is {dic}')
+print(f'type(dic) is: {type(dic)}')
+# Create a list comprehension
+lst = [(k, v) for k, v in data]
+print(f'`lst` is {lst}')
+print(f'type(lst) is {type(lst)}')
+# Create a set comprehension
+st = {k for k, v in data}
+print(f'`st` is {st}')
+print(f'type(st) is {type(st)}')
+
+
+bad_sum = sum( [i for i in range(10_000_000)] )
+good_sum = sum( (i for i in range(10_000_000)) )
+
+
+
+### Sample Solution
+lst = [2,3,12,14,20,21,25,13,15]
+new_lst = [x**2 for x in lst if x**2>150]
+print(f'the new list with value of square greater than 150 is {new_lst}')
+
+
+
+# Downloads Qantas share price beginning 1 January 2020
+import yfinance # 
+tic = "QAN.AX" # 
+start = '2020-01-01' # 
+end = None # 
+df = yfinance.download(tic, start, end) # 
+print(df) # 
+df.to_csv('qan_stk_prc.csv') # 
