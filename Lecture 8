@@ -1,0 +1,25 @@
+The datetime module implements this functionality
+We will use two classes defined in datetime:
+datetime.datetime: Instances represent date + time 
+datetime.timedelta: Instances represent duration (e.g., 1 day, 1 sec, . . . )
+
+
+The datetime.datetime class implements the function now
+import datetime as dt
+dt_now = dt.datetime.now() # -> instance of datetime.datetime
+print(dt_now) # -> displays something like '2023-10-31 10:38:20'
+
+
+Suppose you execute the following in the PyCharm console
+>> import datetime as dt
+>> dt_now = dt.datetime.now() # Suppose "now" is 2023-10-31 11:12:15.377855 >> str_now = '2023-10-31 11:12:15.377855'
+>> print(dt_now) 2023-10-31 11:12:15.377855 >> print(str_now) 2023-10-31 11:12:15.377855
+>> print( repr(dt_now) )
+datetime.datetime(2023, 10, 31, 11, 15, 4, 208442)
+
+
+
+In fact, to create an obj with the same type and value as dt_now above
+>> import datetime as datetime >> new_obj = datetime.datetime(
+year=2022, month=11, day=1,
+hour=8, minute=0, second=0, microsecond=0)
