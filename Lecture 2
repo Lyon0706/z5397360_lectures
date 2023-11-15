@@ -1,0 +1,91 @@
+import yfinance 
+tic = "QAN.AX" 
+start = '2020-01-01' 
+end = None 
+df = yfinance.download(tic, start, end)
+print(df) 
+df.to_csv('qan_stk_prc.csv') 
+
+
+string1 = "Monty Python's Flying Circus"
+string2 = 'I like the "Dead Parrot" sketch'
+string3 = '''When Cleese says:
+"Now that's what I call a dead parrot" '''
+
+
+string3 = '''When Cleese says:
+"Now that's what I call a dead parrot" '''
+print(string3)
+
+
+i = 1
+test = i == 1 # --> True
+print(test)
+f = 1 / 2.0000000000000000000001
+test = f == 1 / 2 # --> True
+print(test)
+
+
+
+True #  boolean representing true
+False #  boolean representing false
+True = 'a true value'
+
+
+# Less-than and less-than or eqaul tests
+1 < 2 #  `True`
+2 < 2 # `False`
+2 <= 2 # `True`
+# Greater-than or greater-than or equal tests
+1 > 2 # `False`
+2 > 2 # `False`
+2 >= 2 # `True`
+
+
+# not
+not True # --> False
+not False # --> True
+# and
+True and True # --> True
+True and False # --> False
+False and True # --> False
+False and False # --> False
+# or
+True or True # --> True
+True or False # --> True
+False or True # --> True
+False or False # --> False
+
+
+
+
+x = 1
+print(type(x)) # <class 'int'>
+xstr = '1'
+print(type(xstr)) # <class 'str'>
+test = x == xstr # --> False
+print(test)
+print(type(test)) # <class 'bool'>
+
+
+
+
+'3' * 2 # --> '33'
+print('x' * 2) # output 'xx'
+
+
+
+import yfinance 
+tic = "QAN.AX" 
+start = '2020-01-01' 
+end = None 
+df = yfinance.download(tic, start, end) 
+print(df) 
+df.to_csv('qan_stk_prc.csv')
+
+
+
+
+x = str('abc')
+xup = str.upper(x)
+print(xup) #'ABC'
