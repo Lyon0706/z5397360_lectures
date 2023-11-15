@@ -1,0 +1,47 @@
+Variable names can be rebound
+lst = [1, 2] # -> Name "lst" bound to the object [1, 2] 
+lst = -99 # -> Name "lst" is rebound to the object -99
+
+
+In the example below, both “x” and “y” are bound to the same object:
+x = -99 # -> Name "x" bound to the object -99
+y = x # -> Name "y" bound to the same object x is bound to
+
+
+lst = [1, 2] # -> lst bound to this list object # The next statement also has the form:
+#   <target> = <expression>
+lst[0] = -99
+
+
+lst=[1,2] #->Namelstboundto[1,2] 
+lst[0] = -99
+
+
+We can get the ID of an object using the built-in function id
+lst = [1, 2] # lst is bound to a list object
+print( id(lst) ) # -> Displays the ID of that object
+
+
+Motivating example: Consider the following statements:
+# Create some lists and assign them to variables
+lst0 = [1, 2] lst1 = [1, 2] lst2 = lst0
+# Make some changes
+lst2[0] = -99
+
+
+
+Selecting elements from data structures:
+Dicts -> Selection by keys (“labels”)
+Tuples/lists -> Selection by index (position)
+Note that there is no ambiguity when using []: dict[indexer]: indexer is the key
+list[indexer]: indexer is an integer (position) 
+
+
+
+Pandas:
+dic = {'a': 1, 2: 3}
+dic['a'] # -> 1 (selection by key/label) dic[2] # -> 3 (selection by key/label)
+lst = [1, 2, 3]
+lst[0] # -> 1 (selection by index/position)
+
+
