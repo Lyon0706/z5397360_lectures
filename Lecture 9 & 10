@@ -1,0 +1,105 @@
+Use event study to tackle this question:
+Event of interest: Upgrades/downgrades
+Null hypothesis: Upgrades/downgrades do not affect stock prices Outcome variable: Cumulative Abnormal Returns (CAR)
+CAR is a measure of the price reaction to event
+We will discuss CAR later in this lecture
+Under the null, E[CAR|Downgrade] = 0 and E[CAR|Upgrade] = 0 Test if E[CAR|Downgrade] = 0 and E[CAR|Upgrade] = 0
+To understand how to implement this event study, let’s go back to our example
+
+Example: 
+Imagine a world with no relevant information between t = −ε and t = ε ε is a tiny period of time
+Only difference in discounted cash flows is because of time (from −ε to ε) Let’s ignore this difference and assume P−ε = Pε
+IfP−ε=Pε,thenrε=Pε−P−ε =0 P−ε
+Now, imagine the same world except we introduce the downgrade at t = 0 Everything else is the same
+Two possibilities in this alternative world:
+1. rε = 0 ⇒ downgrade provided no relevant information
+2. rε ̸= 0 ⇒ downgrade provided new information (incorporated immediately)
+That is, it caused the price movement
+In this scenario, we can use rε to test our hypothesis
+Because downgrade was the only potential source of new relevant information
+
+
+
+Summary so far:
+Null hypothesis: Upgrades/downgrades have no impact on prices Each event is one sample point:
+We will have one AR0 = r0 − E[r0∗] for each event Under the null: E[AR0] = 0
+Individual AR0 = r0 − E[r0∗] may deviate from 0 Test E[AR0] = 0 using a sample of events
+Estimate AR0 for each event  ̄
+Compute t = √ σˆAR/ N
+AR
+Perform a t-test
+
+How to use in Python
+Description above is good template for any Python project: Before coding, sketch out every step in detail
+I will refer to this process as the “design phase”
+The “design phase” is an iterative process
+Takes time and many iterations
+Does not involve actual coding
+The more complex the task is, the more effort you should put in designing What follows is the result of multiple iterations and revisions
+
+
+
+Step 1: Download the data
+
+Step 2: Calculate stock and market returns 
+The “input” CSV files are <prc_csv> and ff_daily.csv
+
+Step 3: Data frame with events of interest
+The input is the CSV file with recommendations (<rec_csv>)
+Convert values of Firm to uppercase (o/w “Deutsche bank” ̸= “Deutsche Bank”) 
+Create a column with the event date:
+Change the index to an “event ID”, create the “Event Type” column
+
+Step 4: Calculate CARs
+Strategy to compute CAR for each event:
+Function to compute CAR for one event
+Apply this function to all events
+
+Step 5: Test null hypothesis
+
+Summary:
+The above example describes most of what our code should do
+Next week, we will discuss how to “translate” this example into code
+The example also highlights a few concepts we have not discussed yet, e.g.:
+In Step 2, how can we combine rmkt from ff_daily?
+In Step 3, how to we select only downgrades and upgrades?
+In Step 4, how do we apply the CAR function to each event efficiently?
+
+Week 10
+Only obs representing upgrades and downgrades
+Step 1: Download the source data
+
+Step 2: Stock and market returns
+1. Use <prc csv> to calculate stock returns
+2. Join returns from <mkt csv>
+Output: Data frame (<ret df>) with structure
+
+Step 3: Prepare the events of interest
+1. Load <rec_csv> into a DF
+2. Convert values of firm to uppercase
+3. Create a new column called event_date
+4. Keep only the last recommendation for each value of (firm, event_date)
+5. Create a column called event_type with values “upgrade” and “downgrade” 
+6. Create an index called event_id, starting at 1
+
+Step 4: Calculate CARs
+1. For each event in <event_df>:
+1.1 Given event_date, select the calendar dates from t = −2 to t = 2 1.2 Use these calendar dates to combine ret and mkt from <ret_df> 1.3 Compute abnormal returns and CAR
+2. Apply this operation to all rows of <event_df>
+
+Step 5: Compute t-stats for upgrades/downgrades
+1. Split the <cars_df> into two groups based on event_type 
+2. For each group, compute tstat
+
+Summary
+We have already determined the following:
+The event study will be implemented in five steps
+We also know the tasks required to implement each step
+The input/output of each step
+Also, the structure of all DFs (column names, indexes)
+Next, we need to “translate” this information into code
+In particular, how the code will be structured
+The modules, functions, etc. . .
+It would make sense to isolate the implementation of each “step”
+But how exactly?
+Let’s look at some examples of (reasonable) design choices
